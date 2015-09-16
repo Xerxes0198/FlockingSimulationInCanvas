@@ -12,7 +12,7 @@ var Bird = function(inX, inY, inDirection)
   {
     locationX += speed * time * Math.sin(2 * Math.PI * direction);
     locationY -= speed * time * Math.cos(2 * Math.PI * direction);
-    direction += .001;
+    direction += .001 * time;
   }
 
   this.draw = function(context)

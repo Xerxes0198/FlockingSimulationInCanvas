@@ -1,5 +1,9 @@
 var BirdHandler = function(numberOfBirds, screenWidth, screenHeight)
 {
+	// Mob location
+	var mobLocationSet = false;
+	var mobLocation;
+
 	//Create an array of birds to manage
 	var birds = new Array();
 
@@ -22,7 +26,19 @@ var BirdHandler = function(numberOfBirds, screenWidth, screenHeight)
 	{
 		for(i = 0; i < birds.length; i++)
 		{
-			birds[i].move(time);
+			if (mobLocationSet == true)
+			{
+				birds[i].SetMobLocation(mobLocation);
+			}
+			
+			birds[i].Move(time);
 		}
+	}
+
+	// Set the location of a mob to avoid.
+	this.SetMobLocation = function(location)
+	{
+		mobLocation = location;
+		mobLocationSet = true;
 	}
 }

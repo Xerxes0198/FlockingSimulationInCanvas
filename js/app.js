@@ -10,6 +10,18 @@ var context = canvas.getContext("2d");
 
 var birdHandler = new BirdHandler(100, canvas.width, canvas.height);
 
+// Make it so when I click on the canvas, I record the point
+canvas.addEventListener('click', function(event)
+{
+	var location = 
+	{
+		"x" : event.x,
+		"y" : event.y
+	}
+
+	birdHandler.SetMobLocation(location);
+}, false);
+
 // Calculate Delta
 var previousTime, now;
 previousTime = Date.now();

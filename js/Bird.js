@@ -3,16 +3,26 @@ var Bird = function(inX, inY, inDirection)
 {
 	var locationX, locationY, speed, direction;
 
+	var mobLocationSet = false;
+	var mobLocation;
+
 	locationX = inX;
 	locationY = inY;
 	speed = 10;
 	direction = inDirection;
 
-	this.move = function(time)
+	this.Move = function(time)
 	{
 		locationX += speed * time * Math.sin(2 * Math.PI * direction);
 		locationY -= speed * time * Math.cos(2 * Math.PI * direction);
 		direction += .001 * time;
+	}
+
+	// Set the location of a mob to avoid.
+	this.SetMobLocation = function(location)
+	{
+		mobLocation = location;
+		mobLocationSet = true;
 	}
 
 	this.draw = function(context)
